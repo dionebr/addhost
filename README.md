@@ -24,6 +24,51 @@ Follow the prompts:
 - Enter the IP address (e.g. 127.0.0.1)
 - Enter one or more domain names separated by spaces (e.g. example.local myapp.test)
 
+Installation
+
+There are two common ways to install `addhost`: use it from the cloned repository (local), or install it system-wide so you can run `addhost` from anywhere.
+
+Local (recommended for development):
+
+1. Make the script executable:
+
+	chmod +x addhost.sh
+
+2. Run it from the repository directory:
+
+	./addhost.sh
+
+Global (make available system-wide):
+
+1. Make the script executable:
+
+	chmod +x addhost.sh
+
+2a. Install by copying to a directory on your PATH (requires sudo):
+
+	sudo cp addhost.sh /usr/local/bin/addhost
+	sudo chmod 755 /usr/local/bin/addhost
+
+2b. Or install by creating a symlink (keeps the repo as single source of truth):
+
+	sudo ln -s /path/to/addhost/addhost.sh /usr/local/bin/addhost
+
+Then run:
+
+	addhost
+
+Notes
+
+- The script uses `sudo` to modify `/etc/hosts`, so you will be prompted for your password when it runs.
+- Ensure `/usr/local/bin` is in your PATH. If you prefer a per-user install, copy the script to `~/bin` and add `export PATH="$HOME/bin:$PATH"` to your shell startup file.
+
+Uninstall
+
+If you copied or symlinked the script to `/usr/local/bin` you can remove it with:
+
+  sudo rm /usr/local/bin/addhost
+
+
 Examples
 
 1) Add a fresh entry for 127.0.0.1:
